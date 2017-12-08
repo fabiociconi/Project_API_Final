@@ -9,8 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
-using Project_API_Final.Data;
+
 using Microsoft.EntityFrameworkCore;
+using Project_API_Final.Models;
+//using Project_API_Final.Models;
 
 namespace Project_API_Final
 {
@@ -26,8 +28,8 @@ namespace Project_API_Final
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			services.AddDbContext<ForumContext>(options =>
-		options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+		DBForumContext.ConnectionString=Configuration.GetConnectionString("ForumDataBaseConnection");
 
 			services.AddMvc();
 			services.AddSwaggerGen(c =>
