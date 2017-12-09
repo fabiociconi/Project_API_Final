@@ -12,29 +12,53 @@ using Swashbuckle.AspNetCore.Swagger;
 
 using Microsoft.EntityFrameworkCore;
 using Project_API_Final.Models;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.IO;
+using Microsoft.Net.Http.Headers;
 //using Project_API_Final.Models;
 
 namespace Project_API_Final
 {
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+	public class Startup
+	{
+		public Startup(IConfiguration configuration)
+		{
+			Configuration = configuration;
+		}
 
-        public IConfiguration Configuration { get; }
+		public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
+		// This method gets called by the runtime. Use this method to add services to the container.
+		public void ConfigureServices(IServiceCollection services)
+		{
 
-		DBForumContext.ConnectionString=Configuration.GetConnectionString("ForumDataBaseConnection");
+			DBForumContext.ConnectionString = Configuration.GetConnectionString("ForumDataBaseConnection");
 
-			services.AddMvc();
+			// XML and JSON Format Support
+			services.AddMvc(options =>
+			{
+				options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
+				options.FormatterMappings.SetMediaTypeMappingForFormat("config", MediaTypeHeaderValue.Parse("application/xml"));
+				options.FormatterMappings.SetMediaTypeMappingForFormat("js", MediaTypeHeaderValue.Parse("application/json"));
+			}).AddXmlSerializerFormatters();
+
+
+			// Register the Swagger generator, defining one or more Swagger documents
 			services.AddSwaggerGen(c =>
 			{
-				c.SwaggerDoc("v1", new Info { Title = "FinalProject API", Version = "v1" });
+				c.SwaggerDoc("v1", new Info
+				{
+					Title = "FinalProject API",
+					Version = "v1",
+					Description = "Forum Control",
+					TermsOfService = "None",
+					Contact = new
+					Contact
+					{ Name = "Fabio Alexandre Ciconi & Rodrigo Geronimo", Email = "", Url = "" },
+
+
+				});
+
 				c.AddSecurityDefinition("Bearer", new ApiKeyScheme()
 				{
 					Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
@@ -45,16 +69,16 @@ namespace Project_API_Final
 			});
 		}
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-		
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		{
+			if (env.IsDevelopment())
+			{
+				app.UseDeveloperExceptionPage();
+			}
 
-            app
+
+			app
 				.UseMvc()
 				.UseSwagger()
 				.UseSwaggerUI(c =>
@@ -62,6 +86,6 @@ namespace Project_API_Final
 					c.ShowJsonEditor();
 					c.SwaggerEndpoint("/swagger/v1/swagger.json", "FinalProject API");
 				});
-        }
-    }
+		}
+	}
 }
