@@ -9,7 +9,8 @@ using Project_API_Final.Models;
 
 namespace Project_API_Final.Controllers
 {
-    [Produces("application/json")]
+	//XML e JSON
+	[Produces("application/json", "application/xml")]
     [Route("api/Users")]
     public class UsersController : Controller
     {

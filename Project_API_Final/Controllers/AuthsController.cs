@@ -9,8 +9,9 @@ using Project_API_Final.Models;
 
 namespace Project_API_Final.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Auths")]
+	//XML e JSON
+	[Produces("application/json", "application/xml")]
+	[Route("api/Auths")]
     public class AuthsController : Controller
     {
         private readonly DBForumContext _context;

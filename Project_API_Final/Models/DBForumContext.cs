@@ -12,9 +12,7 @@ namespace Project_API_Final.Models
 		public virtual DbSet<Threads> Threads { get; set; }
 		public virtual DbSet<Users> Users { get; set; }
 
-		public DBForumContext(DbContextOptions<DBForumContext> options)
-        : base(options)
-    { }
+		public DBForumContext(DbContextOptions<DBForumContext> options) : base(options)  { }
 
 		//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		//        {

@@ -21,6 +21,22 @@ namespace Project_API_Final
 {
 	public class Startup
 	{
+		//public Startup(IHostingEnvironment env)
+		//{
+		//	var builder = new ConfigurationBuilder()
+		//		.SetBasePath(env.ContentRootPath)
+		//		.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+		//		.AddJsonFile($"appsettings.Development.json", optional: true);
+		//	//if (env.IsDevelopment())
+		//	//{
+		//	//	builder.AddUserSecrets<Startup>();
+		//	//}
+
+		//	builder.AddEnvironmentVariables();
+		//	Configuration = builder.Build();
+
+		//}
+
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
@@ -28,11 +44,14 @@ namespace Project_API_Final
 
 		public IConfiguration Configuration { get; }
 
+	
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDbContext<DBForumContext>(options =>
+		options.UseSqlServer(Configuration.GetConnectionString("ForumDataBaseConnection")));
 
-			DBForumContext.ConnectionString = Configuration.GetConnectionString("ForumDataBaseConnection");
+			//DBForumContext.ConnectionString = Configuration.GetConnectionString("ForumDataBaseConnection");
 
 			// XML and JSON Format Support
 			services.AddMvc(options =>
@@ -77,7 +96,29 @@ namespace Project_API_Final
 				app.UseDeveloperExceptionPage();
 			}
 
+			//teste
+			//app
+			//	.UseAuthentication()
+			//	.Use(async (context, next) =>
+			//	{
+			//		await next();
 
+			//		if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
+			//		{
+			//			context.Request.Path = "/index.html";
+			//			await next();
+			//		}
+			//	})
+			//	.UseDefaultFiles(new DefaultFilesOptions { DefaultFileNames = new List<string> { "index.html" } })
+			//	.UseStaticFiles()//www.root
+			//	.UseMvc(routes =>
+			//	{
+			//		routes.MapRoute(
+			//		name: "api",
+			//		template: "api/{controller}/{action}/{id?}");
+			//	});
+
+			//fim-teste
 			app
 				.UseMvc()
 				.UseSwagger()

@@ -8,6 +8,11 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace Project_API_Final.Controllers
 {
+
+
+	/// <summary>
+	/// /Fazendo testes paraver saida XML e JSON
+	/// </summary>
 	[Produces("application/json", "application/xml")]
 
 	[Route("api/[controller]")]
@@ -20,25 +25,26 @@ namespace Project_API_Final.Controllers
 		//	_context = context;
 		//	if (_context.Auth.Count() == 0)
 		//	{
-		//		_context.Auth.Add(new Auth{ Email = "Item1" });
+		//		_context.Auth.Add(new Auth{ Email = "Item1",Password="123" });
 		//		_context.SaveChanges();
 		//	}
 
 		//}
 		//// GET//
-		//[HttpGet("/api/items.{format}"), FormatFilter]
-		//public IEnumerable<Auth> GetAll()
-		//{
-		//	return _context.Auth.ToList();
-
-		//}
+		[HttpGet("/api/items.{format}"), FormatFilter]
+		public IEnumerable<string> GetAll()
+		{
+			return new string[] { "value1", "value2" };
+			//return _context.Auth.ToList();		
+		}
 		
 		// GET api/values
 		[HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
-        }
+			return new string[] { "value1", "value2" };
+			//return _context.Auth.ToList();
+		}
 
         // GET api/values/5
         [HttpGet("{id}")]
