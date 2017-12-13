@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Project_API_Final.Models;
 using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace Project_API_Final.Controllers
 {
 
 
-	/// <summary>
-	/// /Fazendo testes paraver saida XML e JSON
-	/// </summary>
+	/// /Fazendo testes para  ver saida XML e JSON
 	[Produces("application/json", "application/xml")]
 
 	[Route("api/[controller]")]
@@ -31,7 +28,7 @@ namespace Project_API_Final.Controllers
 
 		//}
 		//// GET//
-		[HttpGet("/api/items.{format}"), FormatFilter]
+		[HttpGet("/api/items"), FormatFilter]
 		public IEnumerable<string> GetAll()
 		{
 			return new string[] { "value1", "value2" };

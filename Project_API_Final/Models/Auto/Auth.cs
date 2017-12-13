@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project_API_Final.Models
+namespace Project_API_Final.Models.Auto
 {
     public partial class Auth
     {
