@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Project_API_Final.Models;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Project_API_Final.Models;
-using Project_API_Final.Models.Entity;
 
 namespace Project_API_Final.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Base")]
-    public abstract class BaseController : Controller
-    {
-	
-
+	[Produces("application/json")]
+	[Route("api/Base")]
+	public abstract class BaseController : Controller
+	{
 		public bool IsAuthenticated
 		{
 			get

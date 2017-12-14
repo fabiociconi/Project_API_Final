@@ -10,6 +10,7 @@ namespace Project_API_Final.Models.BusinessRules
 		public TokenEntity Signin(string email, string password)
 		{
 			Auth auth = GetAuthByUser(email);
+
 			if (auth.Password == password)
 			{
 				UserBusiness userBusiness = new UserBusiness();

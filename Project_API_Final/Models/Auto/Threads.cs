@@ -9,7 +9,6 @@ namespace Project_API_Final.Models.Auto
         {
             Posts = new HashSet<Posts>();
         }
-
         public Guid ThreadId { get; set; }
         public Guid UserId { get; set; }
         public string Subject { get; set; }

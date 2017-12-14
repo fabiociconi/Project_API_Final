@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Project_API_Final.Models.Auto;
 using Project_API_Final.Models.BusinessRules;
 using Project_API_Final.Models.Entity;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Project_API_Final.Controllers
 {
-    [Produces("application/json")]
+	[Produces("application/json")]
     [Route("api/Login")]
     public class LoginController : BaseController
 	{
@@ -35,7 +33,7 @@ namespace Project_API_Final.Controllers
 		}
 
 		[HttpPost]
-		public TokenEntity SignIn([FromBody] string user, string password)
+		public TokenEntity SignInAsync([FromBody] string user, string password)
 		{
 			AuthBusiness auth = new AuthBusiness();
 			var result = auth.Signin(user, password);
@@ -49,5 +47,6 @@ namespace Project_API_Final.Controllers
 			return null;
 
 		}
+
 	}
 }

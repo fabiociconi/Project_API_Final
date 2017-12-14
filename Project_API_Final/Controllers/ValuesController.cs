@@ -15,24 +15,11 @@ namespace Project_API_Final.Controllers
 	[Route("api/[controller]")]
     public class ValuesController : Controller
     {
-		//private readonly DBForumContext _context;
-
-		//public ValuesController(DBForumContext context)
-		//{
-		//	_context = context;
-		//	if (_context.Auth.Count() == 0)
-		//	{
-		//		_context.Auth.Add(new Auth{ Email = "Item1",Password="123" });
-		//		_context.SaveChanges();
-		//	}
-
-		//}
-		//// GET//
+		
 		[HttpGet("/api/items"), FormatFilter]
 		public IEnumerable<string> GetAll()
 		{
-			return new string[] { "value1", "value2" };
-			//return _context.Auth.ToList();		
+			return new string[] { "value1", "value2" };		
 		}
 		
 		// GET api/values
@@ -40,7 +27,6 @@ namespace Project_API_Final.Controllers
         public IEnumerable<string> Get()
         {
 			return new string[] { "value1", "value2" };
-			//return _context.Auth.ToList();
 		}
 
         // GET api/values/5
