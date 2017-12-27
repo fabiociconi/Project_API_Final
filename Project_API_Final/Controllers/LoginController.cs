@@ -16,6 +16,22 @@ namespace Project_API_Final.Controllers
     public class LoginController : BaseController
 	{
 
+
+		[HttpPost]
+		public TokenEntity SignInAsync([FromBody] string user, string password)
+		{
+			AuthBusiness auth = new AuthBusiness();
+			var result = auth.Signin(user, password);
+
+			if (result != null)
+			{
+				TokenEntity token = result;
+				token.Token = new JwtSecurityTokenHandler().WriteToken(GetTokenAsync(token));
+				return token;
+			}
+			return null;
+
+		}
 		private JwtSecurityToken GetTokenAsync(TokenEntity token)
 		{
 			var claims = new List<Claim>
@@ -30,22 +46,6 @@ namespace Project_API_Final.Controllers
 
 
 			return new JwtSecurityToken(AppConstants.TokenAudience, AppConstants.TokenAudience, claims, expires: DateTime.Now.AddDays(30), signingCredentials: credentials);
-		}
-
-		[HttpPost]
-		public TokenEntity SignInAsync([FromBody] string user, string password)
-		{
-			AuthBusiness auth = new AuthBusiness();
-			var result = auth.Signin(user, password);
-
-			if (result != null)
-			{
-				TokenEntity tt = result;
-				tt.Token = new JwtSecurityTokenHandler().WriteToken(GetTokenAsync(tt));
-				return tt;
-			}
-			return null;
-
 		}
 
 	}

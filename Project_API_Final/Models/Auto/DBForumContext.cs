@@ -12,8 +12,9 @@ namespace Project_API_Final.Models.Auto
         public virtual DbSet<Users> Users { get; set; }
 
 		public DBForumContext(DbContextOptions options) : base(options)
-		{
-		}
+		{}
+
+		//arrumar para usar do JSON file
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

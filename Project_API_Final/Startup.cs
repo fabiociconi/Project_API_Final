@@ -15,22 +15,7 @@ namespace Project_API_Final
 {
 	public class Startup
 	{
-		//public Startup(IHostingEnvironment env)
-		//{
-		//	var builder = new ConfigurationBuilder()
-		//		.SetBasePath(env.ContentRootPath)
-		//		.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-		//		.AddJsonFile($"appsettings.Development.json", optional: true);
-		//	//if (env.IsDevelopment())
-		//	//{
-		//	//	builder.AddUserSecrets<Startup>();
-		//	//}
-
-		//	builder.AddEnvironmentVariables();
-		//	Configuration = builder.Build();
-
-		//}
-
+		
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
@@ -48,9 +33,6 @@ namespace Project_API_Final
 			services.AddDbContext<DBForumContext>(options =>
 		options.UseSqlServer(Configuration.GetConnectionString("ForumDataBaseConnection")));
 
-
-			//DBForumContext.ConnectionString = Configuration.GetConnectionString("ForumDataBaseConnection");
-
 			// XML and JSON Format Support
 			services.AddMvc(options =>
 			{
@@ -59,12 +41,6 @@ namespace Project_API_Final
 				options.FormatterMappings.SetMediaTypeMappingForFormat("js", MediaTypeHeaderValue.Parse("application/json"));
 			}).AddXmlSerializerFormatters();
 
-
-			// ===== Add Identity ========
-			//services.AddIdentity<IdentityUser, IdentityRole>()
-			//	.AddEntityFrameworkStores<DBForumContext>().AddDefaultTokenProviders();
-
-			// ===== Add Jwt Authentication ========
 
 			services
 			

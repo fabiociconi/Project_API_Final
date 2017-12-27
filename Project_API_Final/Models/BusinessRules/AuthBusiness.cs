@@ -15,11 +15,11 @@ namespace Project_API_Final.Models.BusinessRules
 			{
 				UserBusiness userBusiness = new UserBusiness();
 				Users user = userBusiness.GetUserById(auth.UserId);
-				TokenEntity tt = new TokenEntity
+				TokenEntity token = new TokenEntity
 				{
 					User = user
 				};
-				return tt;
+				return token;
 
 			}
 			return null;
