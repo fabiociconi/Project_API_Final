@@ -93,22 +93,24 @@ namespace Project_API_Final
 				app.UseDeveloperExceptionPage();
 			}
 
+			#region
 			//teste
 			//app
-				//	.UseAuthentication()
-				//	.Use(async (context, next) =>
-				//	{
-				//		await next();
+			//	.UseAuthentication()
+			//	.Use(async (context, next) =>
+			//	{
+			//		await next();
 
-				//		if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
-				//		{
-				//			context.Request.Path = "/index.html";
-				//			await next();
-				//		}
-				//	})
-				//	.UseDefaultFiles(new DefaultFilesOptions { DefaultFileNames = new List<string> { "index.html" } })
-				//	.UseStaticFiles()//www.root
-				app.UseMvc(routes =>
+			//		if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
+			//		{
+			//			context.Request.Path = "/index.html";
+			//			await next();
+			//		}
+			//	})
+			//	.UseDefaultFiles(new DefaultFilesOptions { DefaultFileNames = new List<string> { "index.html" } })
+			//	.UseStaticFiles()//www.root
+			#endregion
+			app.UseMvc(routes =>
 				{
 					routes.MapRoute(
 					name: "api",
