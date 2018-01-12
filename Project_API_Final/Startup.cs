@@ -30,8 +30,9 @@ namespace Project_API_Final
 
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-			services.AddDbContext<DBForumContext>(options =>
-		options.UseSqlServer(Configuration.GetConnectionString("ForumDataBaseConnection")));
+			AppConstants.Cnn = Configuration.GetConnectionString("ForumDataBaseConnection");
+
+			services.AddDbContext<DBForumContext>(options => options.UseSqlServer(AppConstants.Cnn));
 
 			// XML and JSON Format Support
 			services.AddMvc(options =>

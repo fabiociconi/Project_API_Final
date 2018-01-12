@@ -16,5 +16,7 @@ namespace Project_API_Final
 		public const string Poster = "Poster";
 
 		public const string User = "publicUser";
+
+		public static string Cnn = "";
 	}
 }
