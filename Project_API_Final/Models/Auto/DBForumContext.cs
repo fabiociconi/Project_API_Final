@@ -21,7 +21,9 @@ namespace Project_API_Final.Models.Auto
             {
 
                 optionsBuilder.UseSqlServer(@"Data Source=(local);Initial Catalog=DBForum;Integrated Security=False;User Id=dev;Password=dev;MultipleActiveResultSets=True;Connection Timeout=1200");
-            }
+
+				
+			}
         }
 
 
