@@ -14,7 +14,7 @@ namespace Project_API_Final.Models.Auto
         public string Subject { get; set; }
         public DateTime PostedOn { get; set; }
 
-        public Users User { get; set; }
+        //public Users User { get; set; }
         public ICollection<Posts> Posts { get; set; }
     }
 }

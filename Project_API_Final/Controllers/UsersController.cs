@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,8 +10,8 @@ using Project_API_Final.Models.Auto;
 
 namespace Project_API_Final.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Users")]
+	[Produces("application/json", "application/xml")]
+	[Route("api/Users")]
     public class UsersController : Controller
     {
         private readonly DBForumContext _context;
@@ -20,8 +21,8 @@ namespace Project_API_Final.Controllers
             _context = context;
         }
 
-        // GET: api/Users
-        [HttpGet]
+		// GET: api/Users
+		[HttpGet]
         public IEnumerable<Users> GetUsers()
         {
             return _context.Users;

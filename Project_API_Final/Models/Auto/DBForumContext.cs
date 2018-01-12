@@ -102,11 +102,11 @@ namespace Project_API_Final.Models.Auto
 
 				entity.Property(e => e.UserId).HasColumnName("user_id");
 
-				entity.HasOne(d => d.User)
-					.WithMany(p => p.Threads)
-					.HasForeignKey(d => d.UserId)
-					.OnDelete(DeleteBehavior.ClientSetNull)
-					.HasConstraintName("FK_Threads_Users");
+				//entity.HasOne(d => d.User)
+				//	.WithMany(p => p.Threads)
+				//	.HasForeignKey(d => d.UserId)
+				//	.OnDelete(DeleteBehavior.ClientSetNull)
+				//	.HasConstraintName("FK_Threads_Users");
 			});
 
 			modelBuilder.Entity<Users>(entity =>

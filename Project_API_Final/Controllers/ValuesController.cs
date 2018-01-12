@@ -15,7 +15,7 @@ namespace Project_API_Final.Controllers
 	[Route("api/[controller]")]
     public class ValuesController : Controller
     {
-		
+				
 		[HttpGet("/api/items"), FormatFilter]
 		public IEnumerable<string> GetAll()
 		{
